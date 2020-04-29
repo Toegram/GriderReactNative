@@ -3,17 +3,22 @@ import { View, Text, StyleSheet } from 'react-native';
 import Searchbar from './components/Searchbar';
 
 const SearchScreen = () => {
+	const [searchTerm, setSearchTerm] = useState('');
+
 	return (
-		<View style={styles.viewOne}>
-			<Text>Search Screen</Text>
-			<Searchbar />
+		<View style={styles.containerStyle}>
+			<Searchbar
+				term={searchTerm}
+				onTermChange={(newTerm) => setSearchTerm(newTerm)}
+			/>
+			<Text> Search Screen </Text>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
-	viewOne: {
-		backgroundColor: '#110000',
+	containerStyle: {
+		backgroundColor: 'white',
 	},
 });
 
