@@ -1,37 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import Searchbar from './components/Searchbar';
-import yelp from './api/yelp';
+// import yelp from './api/yelp';
+import useResults from './hooks/useResults';
+import ResultsList from './components/ResultsList';
 
 const SearchScreen = () => {
 	const [searchTerm, setSearchTerm] = useState('');
-	const [results, setResults] = useState([]);
-	const [errorMsg, setErrorMsg] = useState('');
+	const [searchAPI, results, errorMsg] = useResults();
 
-	const searchAPI = async () => {
-		try {
-			const responce = await yelp.get('/search', {
-				params: {
-					limit: 50,
-					term: searchTerm,
-					location: 'Riverhead',
-				},
-			});
-			setResults(responce.data.businesses);
-		} catch (err) {
-			setErrorMsg('Something Went Horribly Wrong');
-		}
-	};
+	console.log(results);
 
 	return (
 		<View style={styles.containerStyle}>
 			<Searchbar
 				term={searchTerm}
 				onTermChange={(newTerm) => setSearchTerm(newTerm)}
-				onTermSubmit={() => searchAPI()}
+				onTermSubmit={() => searchAPI(searchTerm)}
 			/>
 			{errorMsg ? <Text> {errorMsg} </Text> : null}
 			<Text> We have found {results.length} results </Text>
+			<ResultsList title='Cost Effective' />
+			<ResultsList title='Bit Pricier' />
+			<ResultsList title='Big Spender' />
 		</View>
 	);
 };
