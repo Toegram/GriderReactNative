@@ -11,7 +11,7 @@ export default () => {
 				params: {
 					limit: 50,
 					term: searchablePhrase,
-					location: '90210',
+					location: '11901',
 				},
 			});
 			setResults(response.data.businesses);
