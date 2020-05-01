@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import Card from './Card';
 
 const ResultsList = ({ title, resultSet }) => {
+	console.log(resultSet[0]);
 	return (
 		<View>
 			<Text style={styles.header}>{title}</Text>
@@ -9,8 +11,9 @@ const ResultsList = ({ title, resultSet }) => {
 				data={resultSet}
 				keyExtractor={(result) => result.id}
 				horizontal
+				showsHorizontalScrollIndicator={false}
 				renderItem={({ item }) => {
-					return <Text style={styles.restName}> {item.name} </Text>;
+					return <Card item={item} />;
 				}}
 			/>
 		</View>
