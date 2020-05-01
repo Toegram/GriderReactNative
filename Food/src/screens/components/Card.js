@@ -17,8 +17,8 @@ export default Card;
 
 const styles = StyleSheet.create({
 	card: {
-		height: 130,
-		width: 250,
+		height: 200,
+		width: 300,
 		borderWidth: 2,
 		borderColor: 'black',
 		borderRadius: 8,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 	},
 	image: {
-		width: 245,
+		width: 295,
 		height: '100%',
 		borderRadius: 10,
 	},

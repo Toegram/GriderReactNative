@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Card from './Card';
 
 const ResultsList = ({ title, resultSet }) => {
-	console.log(resultSet[0]);
 	return (
 		<View>
 			<Text style={styles.header}>{title}</Text>

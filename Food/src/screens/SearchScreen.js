@@ -6,7 +6,7 @@ import useResults from './hooks/useResults';
 import ResultsList from './components/ResultsList';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const SearchScreen = () => {
+const SearchScreen = (props) => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [searchAPI, results, errorMsg] = useResults();
 
@@ -16,15 +16,18 @@ const SearchScreen = () => {
 		});
 	};
 
+	console.log(props);
+
 	return (
-		<View style={styles.containerStyle}>
+		<>
 			<Searchbar
 				term={searchTerm}
 				onTermChange={(newTerm) => setSearchTerm(newTerm)}
 				onTermSubmit={() => searchAPI(searchTerm)}
 			/>
 			{errorMsg ? <Text> {errorMsg} </Text> : null}
-			<Text> We have found {results.length} results </Text>
+			{/* <Text> We have found {results.length} results </Text> */}
+
 			<ScrollView styles={styles.outerView}>
 				<ResultsList
 					title='Cost Effective'
@@ -39,13 +42,14 @@ const SearchScreen = () => {
 					resultSet={filterResultsByPrice('$$$')}
 				/>
 			</ScrollView>
-		</View>
+		</>
 	);
 };
 
 const styles = StyleSheet.create({
 	containerStyle: {
 		backgroundColor: 'white',
+		flex: 1,
 	},
 	outerView: {
 		marginBottom: 20,
