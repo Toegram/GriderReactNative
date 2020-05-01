@@ -7,6 +7,7 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 import Card from './Card';
+import { withNavigation } from 'react-navigation';
 
 const ResultsList = ({ title, resultSet, navigation }) => {
 	return (
@@ -33,7 +34,7 @@ const ResultsList = ({ title, resultSet, navigation }) => {
 	);
 };
 
-export default ResultsList;
+export default withNavigation(ResultsList);
 
 const styles = StyleSheet.create({
 	header: {
