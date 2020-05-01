@@ -1,8 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {
+	StyleSheet,
+	Text,
+	View,
+	FlatList,
+	TouchableOpacity,
+} from 'react-native';
 import Card from './Card';
 
-const ResultsList = ({ title, resultSet }) => {
+const ResultsList = ({ title, resultSet, navigation }) => {
 	return (
 		<View>
 			<Text style={styles.header}>{title}</Text>
@@ -12,7 +18,15 @@ const ResultsList = ({ title, resultSet }) => {
 				horizontal
 				showsHorizontalScrollIndicator={false}
 				renderItem={({ item }) => {
-					return <Card item={item} />;
+					return (
+						<TouchableOpacity
+							onPress={() => {
+								navigation.navigate('ResultsShow');
+							}}
+						>
+							<Card item={item} />
+						</TouchableOpacity>
+					);
 				}}
 			/>
 		</View>
