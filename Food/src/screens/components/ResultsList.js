@@ -22,7 +22,7 @@ const ResultsList = ({ title, resultSet, navigation }) => {
 					return (
 						<TouchableOpacity
 							onPress={() => {
-								navigation.navigate('ResultsShow');
+								navigation.navigate('ResultsShow', { id: item.id });
 							}}
 						>
 							<Card item={item} />
